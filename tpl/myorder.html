@@ -1,0 +1,17 @@
+<div ng-include="'tpl/include/header.html'"></div>
+
+<ion-content class="has-header has-footer">
+    <h1 class="text-center">我的订单</h1>
+    <div class="list list-inset">
+        <a class="item item-thumbnail-left"  ng-repeat="list in myList track by $index"  href="#/detail/{{list.did}}">
+            <img ng-src="img/{{list.img_sm}}"/>
+            <h2>联系人：{{list.user_name}}</h2>
+            <p>下单时间：{{list.order_time | date:'yy-MM-dd HH:mm:ss'}}</p>
+            <p>订单编号：{{list.oid}}</p>
+        </a>
+    </div>
+
+</ion-content>
+
+
+<div ng-include="'tpl/include/footer.html'"></div>

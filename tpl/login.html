@@ -1,0 +1,62 @@
+<ion-content>
+    <form>
+    <div class="list list-inset" ng-if="isRegister">
+        <div class="item">
+            <h1 class="title text-center">登录页面</h1>
+        </div>
+        <div class="item row">
+            <div class="col">
+                <input type="text" placeholder="请输入用户名" ng-model="user.uname"/>
+            </div>
+            <div class="col">
+                <span class="help-block" style="font-size: 12px">用户名可以包含数字或字母</span>
+            </div>
+        </div>
+        <div class="item row">
+            <div class="col">
+                <input type="password" placeholder="请输入密码" ng-model="user.upwd"/>
+            </div>
+            <div class="col">
+                <span class="help-block" style="font-size: 12px">用户密码为六位数字</span>
+            </div>
+        </div>
+        <div class="item">
+            <button class="button button-block button-assertive" ng-click="loginToKw()">登录</button>
+        </div>
+        <div class="item">
+            <p>如果您还未注册，请点击此处<button ng-click="jumpToReg()">注册<i class="ion ion-happy"></i></button></p>
+        </div>
+    </div>
+</form>
+    <form>
+    <div class="list list-inset" ng-if="!isRegister">
+        <div class="item">
+            <h1 class="title text-center">注册页面</h1>
+        </div>
+        <div class="item row">
+            <div class="col">
+                <input type="text" placeholder="请输入用户名" ng-model="user.uname"/>
+            </div>
+            <div class="col">
+                <span class="help-block" style="font-size: 12px">用户名可以包含数字或字母</span>
+            </div>
+        </div>
+        <div class="item row">
+            <div class="col">
+                <input type="password" placeholder="请输入密码" ng-model="user.upwd"/>
+            </div>
+            <div class="col">
+                <span class="help-block" style="font-size: 12px">用户密码为六位数字</span>
+            </div>
+        </div>
+        <div class="item">
+            <button class="button button-block button-balanced" ng-click="registerToKw()">注册</button>
+        </div>
+        <div class="item">
+            <p>如果您已注册账号，请点击此处<button ng-click="jumpToLog()">登录<i class="ion ion-happy-outline"></i></button></p>
+        </div>
+    </div>
+    </form>
+</ion-content>
+
+<div ng-include="'tpl/include/footer.html'"></div>

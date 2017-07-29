@@ -1,0 +1,38 @@
+<ion-header-bar align-title="center">
+    <h1 class="title">购物车</h1>
+    <button class="button button-clear button-dark" ng-click="toggleEdit()">{{editText}}</button>
+</ion-header-bar>
+<ion-content class="has-header has-footer">
+    <div class="list list-inset" ng-if="cart.length>0">
+        <div class="item" ng-repeat="dish in cart track by $index">
+            <div class="row row-center">
+                <div class="col">
+                    <img ng-src="img/{{dish.img_sm}}"/>
+                </div>
+                <div class="col col-center">
+                    <p>{{dish.name}}</p>
+                    <br/>
+                    <p style="color: red">&nbsp;{{dish.price | currency:'¥'}} x {{dish.dishCount}}</p>
+                </div>
+                <div class="col col-center" ng-hide="editEnabled">
+                    <button ng-click="minusFromCart($index)">-</button>
+                    <span>{{dish.dishCount}}</span>
+                    <button ng-click="plusToCart($index)">+</button>
+                </div>
+                <div class="col col-center" ng-hide="editEnabled">
+                    <button ng-click="deleteFromCart(dish.ctid,$index)">删除</button>
+                </div>
+            </div>
+        </div>
+        <div class="item text-right">
+            <p style="color: red">合计：{{sumALL() | currency:'¥' }}</p>
+            <button class="button button-assertive" ng-click="saveAndJump()">去结算({{cart.length}})</button>
+        </div>
+    </div>
+    <div class="card" ng-if="cart.length==0">
+        <button class="button button-dark button-clear" ng-click="jump('main')">亲，购物车还空空是也，快来买买买吧...</button>
+    </div>
+
+</ion-content>
+
+<div ng-include="'tpl/include/footer.html'"></div>

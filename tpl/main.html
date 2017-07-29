@@ -1,0 +1,32 @@
+<div ng-include="'tpl/include/header.html'"></div>
+
+<ion-content class="has-header has-footer">
+    <div class="list list-inset">
+        <label class="item item-input">
+            <input type="text" placeholder="请输入想要搜索的水果名称" ng-model="inputTxt.kw"/>
+            <i class="icon ion-search"></i>
+        </label>
+    </div>
+
+    <div class="list list-inset">
+        <a class="item item-thumbnail-left item-text-wrap" href="#/detail/{{dish.did}}" ng-repeat="dish in dishList track by $index">
+            <img ng-src="img/{{dish.img_sm}}"/>
+            <h2>{{dish.name}}</h2>
+            <p>{{dish.material}}</p>
+            <p>{{dish.price | currency:'￥'}}</p>
+        </a>
+    </div>
+
+    <ion-infinite-scroll on-infinite="loadMore()"
+                         immediate-check="false"
+                         ng-if="hasMore"></ion-infinite-scroll>
+    <div class="card" ng-if="!hasMore">
+        <div class="item assertive-bg">
+            <p style="color: white"><i class="icon ion-alert-circled"></i> 亲，暂时没有更多商品啦！敬请期待后续产品哦~</p>
+        </div>
+    </div>
+</ion-content>
+
+<div ng-include="'tpl/include/footer.html'"></div>
+
+
